@@ -1,0 +1,32 @@
+<h1>Friend List</h1>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Twitter</th>
+      <th scope="col">User ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <% if friend.user == current_user %>
+        <%= render friend %>
+      <% end %>
+    <% end %>
+
+
+    <% if !user_signed_in? %>
+      <% @friends.each do |friend| %>
+        <%= render friend %>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table> 
+
+<%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
